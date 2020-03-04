@@ -691,7 +691,7 @@ DEFINE_INT(trace_wasm_ast_start, 0,
 DEFINE_INT(trace_wasm_ast_end, 0, "end function for wasm AST trace (exclusive)")
 // Enable Liftoff by default on ia32 and x64. More architectures will follow
 // once they are implemented and sufficiently tested.
-#if V8_TARGET_ARCH_IA32 || V8_TARGET_ARCH_X64
+#if V8_TARGET_ARCH_IA32 || V8_TARGET_ARCH_X64 || V8_TARGET_ARCH_S390X || V8_TARGET_ARCH_ARM
 DEFINE_BOOL(liftoff, true,
             "enable Liftoff, the baseline compiler for WebAssembly")
 #else

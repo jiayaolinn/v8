@@ -145,6 +145,11 @@ class V8_EXPORT_PRIVATE TurboAssembler : public TurboAssemblerBase {
   }
   void JumpIfEqual(Register x, int32_t y, Label* dest);
   void JumpIfLessThan(Register x, int32_t y, Label* dest);
+  
+  void FloatMax(DoubleRegister result_reg, DoubleRegister left_reg, DoubleRegister right_reg);
+  void FloatMin(DoubleRegister result_reg, DoubleRegister left_reg, DoubleRegister right_reg);
+  void DoubleMax(DoubleRegister result_reg, DoubleRegister left_reg, DoubleRegister right_reg);
+  void DoubleMin(DoubleRegister result_reg, DoubleRegister left_reg, DoubleRegister right_reg);
 
   void Call(Register target);
   void Call(Address target, RelocInfo::Mode rmode, Condition cond = al);
@@ -863,6 +868,10 @@ class V8_EXPORT_PRIVATE TurboAssembler : public TurboAssemblerBase {
   // Calls Abort(msg) if the condition cond is not satisfied.
   // Use --debug_code to enable.
   void Assert(Condition cond, AbortReason reason, CRegister cr = cr7);
+
+  // Like Assert(), but without condition.
+  // Use --debug-code to enable.
+  void AssertUnreachable(AbortReason reason);
 
   // Like Assert(), but always enabled.
   void Check(Condition cond, AbortReason reason, CRegister cr = cr7);
